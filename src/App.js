@@ -4,9 +4,10 @@ import React, { useState, useRef } from 'react'
 import { Snackbar, IconButton } from '@material-ui/core'
 import { isEmptyObject } from 'jquery'
 import CloseIcon from '@mui/icons-material/Close'
+import { invoke } from '@tauri-apps/api/tauri'
 
 const moment = require('moment-js')
-document.addEventListener('contextmenu', event => event.preventDefault());
+// document.addEventListener('contextmenu', event => event.preventDefault());
 
 function App() {
   const [simulating, setSimulating] = useState(false)
@@ -169,7 +170,10 @@ function App() {
     attachMessageToLogger(`Nó selecionado de partida/chegada: ${simulationNode}.`)
     attachMessageToLogger('A iniciar comunicação com a API do backend...')
 
-    //enviar o grafo para o rust
+    graph.starting_node = simulationNode
+
+    // a enviar o grafo para o rust
+    invoke('start_resolving_tsp', { invoke_message: JSON.stringify(graph) })
   }
 
   const attachMessageToLogger = (message) => {
