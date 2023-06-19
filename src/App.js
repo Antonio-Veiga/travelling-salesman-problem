@@ -198,7 +198,7 @@ function App() {
       }
 
       if (data.loggerMesage) {
-        attachMessageToLogger(formatLoggerMessage(data.loggerMesage))
+        attachMessageToLogger(data.loggerMesage)
       }
     })
 

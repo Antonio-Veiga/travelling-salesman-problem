@@ -217,8 +217,8 @@ fn solve_tsp(graph: Graph) {
                 Some(neighbour_values) => neighbour_values,
                 None => {
                     *instruction_count += 1;
-                    print_to_logger(format!("Sem vizinhos caminho incompatível."), false);
-                    println!("Sem vizinhos caminho incompatível.");
+                    // print_to_logger(format!("Sem vizinhos caminho incompatível."), false);
+                    // println!("Sem vizinhos caminho incompatível.");
                     return;
                 }
             };
@@ -232,10 +232,10 @@ fn solve_tsp(graph: Graph) {
                 Some(&v) => v,
                 None => {
                     *instruction_count += 1;
-                    print_to_logger(
-                        format!("Não existe ligação ao nó inicial, caminho incompatível."),
-                        false,
-                    );
+                    // print_to_logger(
+                    //     format!("Não existe ligação ao nó inicial, caminho incompatível."),
+                    //     false,
+                    // );
                     println!("Não existe ligação ao nó inicial, caminho incompatível.");
                     return;
                 }
@@ -260,7 +260,7 @@ fn solve_tsp(graph: Graph) {
             Some(neighbour_values) => neighbour_values,
             None => {
                 *instruction_count += 1;
-                print_to_logger(format!("Sem vizinhos caminho incompatível."), false);
+                // print_to_logger(format!("Sem vizinhos caminho incompatível."), false);
                 println!("Sem vizinhos caminho incompatível.");
                 return;
             }
@@ -278,8 +278,8 @@ fn solve_tsp(graph: Graph) {
                 // adiciona o próximo vértice ao caminho
                 path.push(next_vertex);
 
-                print_to_logger(format!("Caminho atual: {:?}", path), false);
-                print_to_logger(format!("Peso atual: {:?}", curr_weight), false);
+                // print_to_logger(format!("Caminho atual: {:?}", path), false);
+                // print_to_logger(format!("Peso atual: {:?}", curr_weight), false);
 
                 // chamada recursiva para explorar o próximo vértice
                 branch_and_bound(
@@ -338,7 +338,7 @@ fn solve_tsp(graph: Graph) {
             );
             print_to_logger(format!("Peso total: {:?}", best_weight), false);
             print_to_logger(
-                format!("Número de instruções totais: {:?}", best_weight),
+                format!("Número de instruções totais: {:?}", instruction_count),
                 false,
             );
             print_to_logger(
