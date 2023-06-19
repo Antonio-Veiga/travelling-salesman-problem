@@ -1,13 +1,14 @@
 import './App.css'
 import GraphSandbox from './GraphSandbox'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Snackbar, IconButton } from '@material-ui/core'
 import { isEmptyObject } from 'jquery'
 import CloseIcon from '@mui/icons-material/Close'
 import { invoke } from '@tauri-apps/api/tauri'
+import { appWindow } from "@tauri-apps/api/window"
 
 const moment = require('moment-js')
-// document.addEventListener('contextmenu', event => event.preventDefault());
+// document.addEventListener('contextmenu', event => event.preventDefault())
 
 function App() {
   const [simulating, setSimulating] = useState(false)
@@ -164,7 +165,7 @@ function App() {
     setSimulating(true)
     let graph = graphSandboxRef.current.getGraph()
 
-    attachMessageToLogger('A iniciar o algorítmo \'Nearest Neighbours\' para o grafo criado.')
+    attachMessageToLogger('A iniciar o algorítmo \'Branch and Bound\' para o grafo criado.')
     attachMessageToLogger(`Número de nós: ${graph.nodes.length}.`)
     attachMessageToLogger(`Número de ligações: ${graph.edges.length}.`)
     attachMessageToLogger(`Nó selecionado de partida/chegada: ${simulationNode}.`)
@@ -183,6 +184,26 @@ function App() {
   const formatLoggerMessage = (message) => {
     return `[${moment(new Date()).format('DD-MM-YYYY HH:mm:ss')}]: ${message}`
   }
+
+  useEffect(() => {
+    appWindow.listen("print-to-logger", ({ event, payload }) => {
+
+      console.log(event)
+      console.log(payload)
+
+      const { data } = payload
+
+      if (data.unlockGraph) {
+        setSimulating(false)
+      }
+
+      if (data.loggerMesage) {
+        attachMessageToLogger(formatLoggerMessage(data.loggerMesage))
+      }
+    })
+
+    // eslint-disable-next-line
+  }, [])
 
   const action = (
     <React.Fragment>
@@ -276,7 +297,7 @@ function App() {
             duration-150 ease-in-out hover:bg-gray-800 hover:text-white hover:border-white disabled:bg-gray-300 disabled:pointer-events-none'> simular </button>
           </div>
           <div className='flex-1 p-[0.10em] flex flex-col items-center justify-end'>
-            <p className='text-[0.55em] text-gray-300 px-1.5'>NEAREST NEIGHBOURS - v0.1</p>
+            <p className='text-[0.55em] text-gray-300 px-1.5'>Branch and Bound - v0.1</p>
           </div>
         </div>
         <div data-attr="sandbox-container" className='row-span-1 col-span-6 grid grid-rows-6 gap-2'>
