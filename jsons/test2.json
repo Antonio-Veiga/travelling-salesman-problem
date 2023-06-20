@@ -1,0 +1,152 @@
+{
+    "nodes": [
+        {
+            "id": "A",
+            "label": "A"
+        },
+        {
+            "id": "B",
+            "label": "B"
+        },
+        {
+            "id": "C",
+            "label": "C"
+        },
+        {
+            "id": "D",
+            "label": "D"
+        },
+        {
+            "id": "E",
+            "label": "E"
+        },
+        {
+            "id": "F",
+            "label": "F"
+        },
+        {
+            "id": "G",
+            "label": "G"
+        },
+        {
+            "id": "H",
+            "label": "H"
+        }
+    ],
+    "edges": [
+        {
+            "from": "A",
+            "to": "B",
+            "weight": 3,
+            "label": "3"
+        },
+        {
+            "from": "A",
+            "to": "C",
+            "weight": 8,
+            "label": "8"
+        },
+        {
+            "from": "A",
+            "to": "G",
+            "weight": 4,
+            "label": "4"
+        },
+        {
+            "from": "A",
+            "to": "H",
+            "weight": 3,
+            "label": "3"
+        },
+        {
+            "from": "B",
+            "to": "C",
+            "weight": 2,
+            "label": "2"
+        },
+        {
+            "from": "B",
+            "to": "H",
+            "weight": 3,
+            "label": "3"
+        },
+        {
+            "from": "C",
+            "to": "D",
+            "weight": 8,
+            "label": "8"
+        },
+        {
+            "from": "C",
+            "to": "E",
+            "weight": 6,
+            "label": "6"
+        },
+        {
+            "from": "C",
+            "to": "G",
+            "weight": 9,
+            "label": "9"
+        },
+        {
+            "from": "D",
+            "to": "E",
+            "weight": 4,
+            "label": "4"
+        },
+        {
+            "from": "D",
+            "to": "F",
+            "weight": 2,
+            "label": "2"
+        },
+        {
+            "from": "D",
+            "to": "G",
+            "weight": 9,
+            "label": "9"
+        },
+        {
+            "from": "D",
+            "to": "H",
+            "weight": 8,
+            "label": "8"
+        },
+        {
+            "from": "E",
+            "to": "F",
+            "weight": 4,
+            "label": "4"
+        },
+        {
+            "from": "E",
+            "to": "G",
+            "weight": 9,
+            "label": "9"
+        },
+        {
+            "from": "E",
+            "to": "H",
+            "weight": 7,
+            "label": "7"
+        },
+        {
+            "from": "F",
+            "to": "G",
+            "weight": 5,
+            "label": "5"
+        },
+        {
+            "from": "F",
+            "to": "H",
+            "weight": 6,
+            "label": "6"
+        },
+        {
+            "from": "G",
+            "to": "H",
+            "weight": 3,
+            "label": "3"
+        }
+    ]
+}

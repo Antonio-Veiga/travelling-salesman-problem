@@ -11,6 +11,12 @@ const GraphSandbox = forwardRef((props, ref) => {
     const [selectedEdge] = useState(null)
     const [isGraphEmpty, setIsGraphEmpty] = useState(true)
 
+    const [edgeLength, setEdgeLength] = useState(100)
+
+    const calculateEdgeLength = (numVertices) => {
+        return 100 + numVertices * 15
+    }
+
     const options = {
         layout: {
             hierarchical: false
@@ -23,6 +29,7 @@ const GraphSandbox = forwardRef((props, ref) => {
             smooth: {
                 type: "continuous"
             },
+            length: edgeLength
         },
         nodes: {
             shape: 'circle',
@@ -69,7 +76,7 @@ const GraphSandbox = forwardRef((props, ref) => {
                 nodes: prevGraph.nodes,
                 edges: updatedEdges,
             }
-        });
+        })
     }
 
     const emptyGraph = () => {
@@ -140,6 +147,12 @@ const GraphSandbox = forwardRef((props, ref) => {
         return graph
     }
 
+    useEffect(() => {
+        const numVertices = graph.nodes.length
+        const newEdgeLength = calculateEdgeLength(numVertices)
+        setEdgeLength(newEdgeLength)
+    }, [graph.nodes.length])
+
     useImperativeHandle(ref, () => ({
         addNode,
         addEdge,
@@ -148,6 +161,7 @@ const GraphSandbox = forwardRef((props, ref) => {
         hasNode,
         hasEdge,
         getGraph,
+        setGraph,
         emptyGraph,
         isEmptyGraph,
         removeNode,

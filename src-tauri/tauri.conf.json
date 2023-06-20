@@ -56,7 +56,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 640,
+        "height": 690,
         "resizable": false,
         "title": "Problema do Caixeiro-Viajante",
         "width": 800
